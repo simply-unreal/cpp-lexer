@@ -1,0 +1,1 @@
+cmake --build build && clear && ./build/Cpp-Lexer
