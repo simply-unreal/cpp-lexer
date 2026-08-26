@@ -1,1 +1,0 @@
-/usr/bin/clang++ -Xlinker --dependency-file=CMakeFiles/Cpp-Lexer.dir/link.d "CMakeFiles/Cpp-Lexer.dir/src/main.cpp.o" -o Cpp-Lexer

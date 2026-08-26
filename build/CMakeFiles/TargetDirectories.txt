@@ -1,3 +1,0 @@
-/home/hunterscott/Development/Projects/C++/Lexer/build/CMakeFiles/Cpp-Lexer.dir
-/home/hunterscott/Development/Projects/C++/Lexer/build/CMakeFiles/edit_cache.dir
-/home/hunterscott/Development/Projects/C++/Lexer/build/CMakeFiles/rebuild_cache.dir
