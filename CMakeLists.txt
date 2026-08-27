@@ -8,4 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(Cpp-Lexer
     src/main.cpp
+    src/lexer.cpp
 )
+
+target_include_directories(Cpp-Lexer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
