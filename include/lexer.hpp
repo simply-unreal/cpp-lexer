@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 enum class TokenType {
+    Error,
     Unknown,
     EndOfFile,
 
@@ -82,15 +83,13 @@ enum class TokenType {
     Range, // ..
 
     Arrow, // ->
-
-    InvalidCharacter
 };
 
 struct Token {
     std::string value;
     TokenType type;
 
-    Token(std::string val, TokenType type);
+    Token(std::string value, TokenType type);
 };
 
 class Lexer {
@@ -99,6 +98,7 @@ class Lexer {
     private:
         int pos = 0;
         std::string code;
+        std::vector<Token> tokens;
 
         std::unordered_map<std::string, TokenType> keywords = {
             {"true", TokenType::True},
@@ -122,11 +122,44 @@ class Lexer {
             {"i8", TokenType::I8},
             {"i16", TokenType::I16},
             {"i32", TokenType::I32},
-            {"i64", TokenType::I64}
+            {"i64", TokenType::I64},
+            {"f32", TokenType::F32},
+            {"f64", TokenType::F64},
+            {"and", TokenType::And},
+            {"not", TokenType::Not},
+            {"or", TokenType::Or}
+        };
+
+        std::unordered_map<std::string, TokenType> symbols = {
+            {"+", TokenType::Plus},
+            {"-", TokenType::Minus},
+            {"*", TokenType::Star},
+            {"/", TokenType::Slash},
+            {"%", TokenType::Percent},
+            {"+=", TokenType::PlusEqual},
+            {"->", TokenType::Arrow},
+            {"=", TokenType::Equal},
+            {"==", TokenType::EqualEqual},
+            {"!=", TokenType::NotEqual},
+            {"<", TokenType::Less},
+            {"<=", TokenType::LessEqual},
+            {">", TokenType::Greater},
+            {">=", TokenType::GreaterEqual},
+            {"(", TokenType::LeftParen},
+            {")", TokenType::RightParen},
+            {"{", TokenType::LeftBrace},
+            {"}", TokenType::RightBrace},
+            {"[", TokenType::LeftBracket},
+            {"]", TokenType::RightBracket},
+            {",", TokenType::Comma},
+            {";", TokenType::Semicolon},
+            {":", TokenType::Colon},
+            {".", TokenType::Dot},
+            {"..", TokenType::Range}
         };
 
         char peek() const;
-        void advance();
+        void advance(int i);
         bool is_at_end() const;
         char get_current() const;
 
